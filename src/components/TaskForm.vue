@@ -81,9 +81,9 @@ function handleSubmit() {
   if (!newTask.value.trim()) return;
 
   const payload = {
-    title: newTask.value.trim(),
-    imgAttachmentKey: imgAttachmentKey.value,
-  };
+  title: newTask.value.trim(),
+  img_attachment_key: imgAttachmentKey.value,
+};
 
   if (props.editingTask) {
     emit('update', props.editingTask.id, payload);
