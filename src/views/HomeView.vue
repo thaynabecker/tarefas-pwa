@@ -9,11 +9,16 @@
       @cancel="handleCancel"
     />
 
-    <p v-if="store.loading" class="loading-message">Carregando tarefas...</p>
+    <p v-if="store.loading" class="loading-message">
+      Carregando tarefas...
+    </p>
 
     <template v-else>
       <section v-if="store.pendingTasks.length > 0">
-        <h2 class="section-title">Pendentes ({{ store.pendingTasks.length }})</h2>
+        <h2 class="section-title">
+          Pendentes ({{ store.pendingTasks.length }})
+        </h2>
+
         <TaskItem
           v-for="task in store.pendingTasks"
           :key="task.id"
@@ -25,7 +30,10 @@
       </section>
 
       <section v-if="store.completedTasks.length > 0">
-        <h2 class="section-title">Concluídas ({{ store.completedTasks.length }})</h2>
+        <h2 class="section-title">
+          Concluídas ({{ store.completedTasks.length }})
+        </h2>
+
         <TaskItem
           v-for="task in store.completedTasks"
           :key="task.id"
@@ -60,11 +68,11 @@ onMounted(() => {
 })
 
 function handleAdd(payload) {
-  store.addTask(payload);
+  store.addTask(payload)
 }
 
-function handleUpdate(id, title, imgAttachmentKey) {
-  store.updateTask(id, { title, imgAttachmentKey })
+function handleUpdate(id, payload) {
+  store.updateTask(id, payload)
   editingTask.value = null
 }
 
@@ -81,7 +89,10 @@ function handleToggle(id) {
 }
 
 function handleRemove(id) {
-  if (editingTask.value?.id === id) editingTask.value = null
+  if (editingTask.value?.id === id) {
+    editingTask.value = null
+  }
+
   store.removeTask(id)
 }
 </script>
